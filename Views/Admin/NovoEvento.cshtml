@@ -1,0 +1,37 @@
+@model PROJETO.DTO.EventoDTO
+@{
+    Layout = "_NovoLayout";
+}
+<h1>Novo Evento</h1>
+<form class="form-horizontal" asp-controller="Evento" asp-action="Salvar" method="POST">
+    <input type="hidden" asp-for="Id" value="0">
+    
+    <label asp-for="Nome">Nome</label>
+    <input class="form-control" type="text" asp-for="Nome">
+    <span asp-validation-for="Nome"></span><p></p>
+
+    <label asp-for="CategoriaId">Categoria</label>
+    <select class="form-control" asp-for="CategoriaId" asp-items='@(new SelectList(@ViewBag.Categorias, "Id", "NomeCategoria"))'></select>
+    
+    <a class="btn btn-success" asp-controller="Admin" asp-action="NovaCategoria">Adicionar categoria</a><p></p>
+
+    <label asp-for="LocalId">Local</label>
+    <select class="form-control" asp-for="LocalId" asp-items='@(new SelectList(@ViewBag.Locais, "Id", "NomeDoLocal"))'></select>
+    
+    <a class="btn btn-success" asp-controller="Admin" asp-action="NovoLocal">Adicionar Local</a><p></p>
+
+    <label asp-for="Data">Data</label>
+    <input class="form-control" type="date" asp-for="Data">
+    <span asp-validation-for="Data"></span><p></p>
+
+    <label asp-for="Preco">Preço do ingresso</label>
+    <input class="form-control" type="number" asp-for="Preco" placeholder="000">
+    <span asp-validation-for="Preco"></span><p></p>
+
+    <label asp-for="QuantidadeIngresso">Quantidade de ingressos</label>
+    <input class="form-control" type="number" asp-for="QuantidadeIngresso" placeholder="000">
+    <span asp-validation-for="QuantidadeIngresso"></span><p></p>
+    
+    <button class="btn btn-success">Adicionar Novo Evento</button>
+</form>
+<p></p>

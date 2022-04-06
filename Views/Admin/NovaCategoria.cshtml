@@ -1,0 +1,14 @@
+@model PROJETO.DTO.CategoriaDTO
+@{
+    Layout = "_NovoLayout";
+}
+<h1>Adicionar Categoria</h1>
+<form class="form-horizontal" asp-controller="Categoria" asp-action="Salvar" method="POST">
+    <input type="hidden" asp-for="Id" value="0">
+    
+    <label asp-for="NomeCategoria">Nome</label>
+    <input class="form-control" type="text" asp-for="NomeCategoria">
+    <span asp-validation-for="NomeCategoria"></span><p></p>
+    <a class="btn btn-success" asp-controller="Admin" asp-action="ListaCategorias">Voltar</a>
+    <button class="btn btn-success">Salvar nova categoria</button>
+</form>

@@ -1,0 +1,14 @@
+@model PROJETO.DTO.CategoriaDTO
+@{
+    Layout = "_NovoLayout";
+}
+<h1>Editar Categoria</h1>
+<form class="form-horizontal" asp-controller="Categoria" asp-action="Editar" method="POST">
+    <input type="hidden" asp-for="Id">
+    
+    <label asp-for="NomeCategoria">Nome da Categoria</label>
+    <input class="form-control" type="text" asp-for="NomeCategoria">
+    <span asp-validation-for="NomeCategoria"></span><p></p>
+    <a class="btn btn-success" asp-controller="Admin" asp-action="ListaCategorias">Voltar</a>
+    <button class="btn btn-success">Salvar alterações</button>
+</form>

@@ -1,0 +1,44 @@
+@model IEnumerable<PROJETO.Models.Evento>
+@{
+    Layout = "_NovoLayout";
+}
+<h1>Eventos - Admin</h1>
+<hr/>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <body>
+    <tbody>
+        <a class="btn btn-success" asp-controller="Admin" asp-action="NovoEvento">Novo Evento</a><p></p>
+        @foreach (var evento in Model)
+        {
+            
+            var imagemPath = "~/Imagens/" + (evento.Categoria.NomeCategoria + ".jpg");
+            <tr>
+                <td width="200" ><img src="@imagemPath" class="w-50" asp-append-version="true"></td>
+                <td><b>@evento.Nome</b><p>
+                Categoria: @evento.Categoria.NomeCategoria<p>
+                Local: @evento.Local.NomeDoLocal<p></p>
+                Data: @evento.Data.ToString("dd/MM/yyyy")<p>
+                Preço: @evento.Preco.ToString("C")<p>
+                Ingressos: @evento.QuantidadeIngresso.ToString("n0")</td>
+                <td>
+                    
+                    <a class="btn btn-success" href="/Admin/EditarEvento/@evento.Id">Editar</a>
+                    <a class="btn btn-primary" href="/Evento/FinalizarEvento/@evento.Id">Finalizar</a>
+
+                    <form style="display: inline;" asp-controller="Evento" asp-action="DeletarEvento" method="Post">
+                    <input type="hidden" name="id" id="id" value="@evento.Id">
+                    <button class="btn btn-outline-danger">Deletar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+    </body>
+</table>

@@ -1,0 +1,43 @@
+@model IEnumerable<PROJETO.Models.Categoria>
+@{
+    Layout = "_NovoLayout";
+}
+<h1>Categorias - Admin</h1>
+<hr/>
+
+<script>
+    $(document).ready( function () {
+    $('#categorias').DataTable();
+} );
+</script>
+
+<table id="categorias" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Imagem da Categoria</th>
+            <th>Nome da Categoria</th>
+            <th>Ações possíveis</th>
+        </tr>
+    </thead>
+    <body>
+    <tbody>
+        <a class="btn btn-success" asp-controller="Admin" asp-action="NovaCategoria">Adicionar Categoria</a><p></p>
+        @foreach (var categoria in Model)
+        {
+            var imagemPath = "~/Imagens/" + (categoria.NomeCategoria + ".jpg");
+            <tr>
+                <td width="200" ><img src="@imagemPath" class="w-50" asp-append-version="true"></td>
+                <td>
+                Categoria: @categoria.NomeCategoria
+                </td>
+                <td>
+                    <a class="btn btn-success" href="/Admin/EditarCategoria/@categoria.Id">Editar Nome</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    </body>
+</table>
+<div><b>Obs: Ainda não é possível alterar ou adicionar uma nova imagem de Categoria</b><p>
+    Imagens disponíveis para Categorias: Axé, comédia, eletrônica, forró, mpb, pop, rock, samba, sertanejo. 
+</p></div><p>

@@ -1,0 +1,30 @@
+@model IEnumerable<PROJETO.Models.Local>
+@{
+    Layout = "_NovoLayout";
+}
+<h1>Locais de Shows - Admin</h1>
+<hr/>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nome do Local</th>
+            <th>Ações possíveis</th>
+        </tr>
+    </thead>
+    <body>
+    <tbody>
+        <a class="btn btn-success" asp-controller="Admin" asp-action="NovoLocal">Adicionar Local</a><p></p>
+        @foreach (var local in Model)
+        {
+            <tr>
+                <td>
+                <b>@local.NomeDoLocal</b>
+                </td>
+                <td>
+                    <a class="btn btn-success" href="/Admin/EditarLocal/@local.Id">Editar Nome</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    </body>
+</table>

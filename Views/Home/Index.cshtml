@@ -1,0 +1,83 @@
+﻿@model IEnumerable<PROJETO.Models.Evento>
+@{
+    Layout = "_NovoLayout";
+}
+
+<div class="text-center">
+    <h2 class="display-4">Bem vindo ao ShowStore</h2>
+    <p><h4>Seu novo site para compras de ingressos para seus show favoritos</h4></p>
+</div>
+<body>
+    <h3>Eventos</h3>
+<hr/>
+
+<script>
+    $(document).ready( function () {
+    $('#eventos').DataTable();
+} );
+</script>
+
+<table id="eventos" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th></th>
+            <th><h3>Evento</h3></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var evento in Model)
+        {
+            var imagemPath = "~/Imagens/" + (evento.Categoria.NomeCategoria + ".jpg");
+            <tr>
+                <td width="200"><img src="@imagemPath" class="w-100" asp-append-version="true"></td>
+                <td align="center"><h5><b>@evento.Nome<p></b></h5>
+                Categoria: @evento.Categoria.NomeCategoria<p>
+                Local: @evento.Local.NomeDoLocal<p>
+                Data: @evento.Data.ToString("dd/MM/yyyy")<p>
+                Preço: @evento.Preco.ToString("C")<p>
+                Ingressos: @evento.QuantidadeIngresso.ToString("n0")<p>
+
+                    <a class="btn btn-outline-success" asp-controller="" asp-action="">Comprar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>      
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* @{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h2 class="display-4">Bem vindo ao StoreShow</h2>
+    <p><h4>Seu novo site para compras de ingressos para seus show favoritos</h4></p>
+</div>
+<body>      
+    <form>
+        <button class="btn btn-success" asp-controller="Home" asp-action="Eventos" >Shows Disponíveis</button><p></p>
+        <button class="btn btn-success" asp-controller="" asp-action="" >Pre-Venda</button>
+    </form>
+
+</body> *@

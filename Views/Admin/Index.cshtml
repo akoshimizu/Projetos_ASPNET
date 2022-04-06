@@ -1,0 +1,12 @@
+@model IEnumerable<PROJETO.Models.Evento>
+@{
+    Layout = "_NovoLayout";
+}
+<h1><center>Área de Administração</center></h1><p>
+    <hr/>
+    <center>
+        <a class="btn btn-success" asp-controller="Admin" asp-action="ListaEventos">Listar Eventos</a>
+        <a class="btn btn-success" asp-controller="Admin" asp-action="ListarEventosDesativados">Listar Eventos Desativados</a>
+        <a class="btn btn-success" asp-controller="Admin" asp-action="ListaCategorias">Listar Categorias</a>
+        <a class="btn btn-success" asp-controller="Admin" asp-action="ListaLocais">Listar Locais</a>
+    </center>

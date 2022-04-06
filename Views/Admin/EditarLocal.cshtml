@@ -1,0 +1,13 @@
+@model PROJETO.DTO.LocalDTO
+@{
+    Layout = "_NovoLayout";
+}
+<h1>Adicionar Novo Local</h1>
+<form class="form-horizontal" asp-controller="Local" asp-action="Editar" method="POST">
+    <input type="hidden" asp-for="Id">
+    <label asp-for="NomeDoLocal">Nome</label>
+    <input class="form-control" type="text" asp-for="NomeDoLocal">
+    <span asp-validation-for="NomeDoLocal"></span><p></p>
+    <a class="btn btn-success" asp-controller="Admin" asp-action="">Voltar</a>
+    <button class="btn btn-success">Atualizar local</button>
+</form>
